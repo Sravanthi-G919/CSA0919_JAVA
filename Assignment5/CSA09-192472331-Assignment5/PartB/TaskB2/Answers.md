@@ -1,0 +1,4 @@
+# Task B2 – Adversarial input
+Run the local schema in `PartB/sql/schema.sql` first, then run `LoginComparison` with MySQL Connector/J. The unsafe query concatenates input into SQL; the crafted ID in the program is for a disposable local test database only. `PreparedStatement` treats the same string as a literal value and should reject it when no matching user exists.
+Run `DamagedPassFileTest` to see malformed field counts and non-numeric amounts skipped. The simple demo format treats blank lines as damaged records. Do not run the unsafe code against real systems.
+Alternative: quote escaping or regular-expression validation is fragile because SQL syntax and encodings are complex; parameter binding keeps data separate from SQL syntax. Validation cost is typically O(length of input), usually small, but it is not a substitute for parameterization.

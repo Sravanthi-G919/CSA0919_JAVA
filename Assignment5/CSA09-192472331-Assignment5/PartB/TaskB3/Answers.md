@@ -1,0 +1,4 @@
+# Task B3 – JDBC comparison
+Run `PartB/sql/schema.sql` in MySQL, then run `JdbcInsertBenchmark`. It compares Statement, PreparedStatement and PreparedStatement batching at 10, 1,000, 10,000 and 100,000 rows and prints column metadata. Fill the CSV using your actual output.
+`PassLoader.loadAll` sets five parameters, batches every 1,000 rows, commits once, rolls back on failure and restores auto-commit. `TransactionFailureDemo` demonstrates rollback after a forced failure; run only on the assignment test database because it clears `bus_pass`.
+A multi-row INSERT can reduce round trips but may hit packet/statement-size limits. `LOAD DATA` is often efficient for large imports but requires permissions and careful validation. Batching uses O(b) client-side batch memory for batch size b; total processing is O(n) in rows, with actual elapsed time dominated by network/database/index/transaction costs.
